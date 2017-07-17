@@ -1,0 +1,64 @@
+# sargam interview practise
+
+# Question 1
+ 
+We substring the first string to the length of the second string, sort both strings and compare. If not equal, we substring the first string at the next index and continue the process to find whether anagram of second string is a substring of the first. 
+Solution calls for string manipulation (substring), which is best done by treating string as
+array of characters. Hence data structure of choice here is an array. Space complexity of this 
+solution is O(sl+tl), because we are storing two strings in the array of same size.
+
+ 
+Time complexity: O(n*log(n)) because sorting of the strings is involved
+Space complexity: O(a+b) where a and b are number of unique characters in the string
+
+# Question 2 Longest Pallindromic Substring
+
+Here, I run while loop accross the string, create a temp string and if its length is greater than the current longest pallindrome, i check whether the temp string is a pallindrome. If its a pallindrome, it becomes the new longest pallindrome and I repeat the process. 
+Time complexity: O(n) since there is a single while loop 
+Space complexity: O(1) just need to store the pallindromoic string in a variable
+
+
+# Question 3
+Kruskal’s Algorithm builds the spanning tree by adding edges one by one into a growing spanning tree. 
+
+Algorithm Steps:
+- Sort the graph edges with respect to their weights.
+- Start adding edges to the MST from the edge with the smallest weight until the edge of the largest weight.
+- Only add edges which doesn't form a cycle.
+
+
+
+In the kruskal implementation, sorting edges has complexity of O(n*log(n)), while the for loop that iterates 
+over edges has complexity of O(n). Since we have used 'rank' (or length) to flatten the tree we can assume
+that both find and union operation to be very fast. Overall, the complexity of the solution is dominated by 
+sorting operation, which is O(n*log(n)).
+
+
+We decided to use python dictionary data structure to store node Sets and ranks, because it allows both find
+and union operation to perform in a constant time complexity O(1). If we had used Tree data structure then we 
+would had to traverse the tree in each iteration; increasing complexity to O(log(n)).
+
+
+Space complexity of storing all vertices and edges in main function is O(V + E). In kruskal impl parent and
+rank sets have O(V) respectively. In worst case output MST can have O(V + W) complexity. Overall, the space
+complexity of the entire solution is O(4V + E + W), which can be approximated to O(n), where n is the number of
+vertices in the graph.
+
+
+
+# Question 4
+List datastructure is used to store all the parents of first node. List is flexible in size as we do not know the length beforehand.
+First, we list all the parents of the first node using helper function parent. 
+Next, we loop through parents of second node one at a time and if that parent is found in the previous list, there is a match and we return the node. 
+Time complexity: O(n) because there are just two single while loops at two separate ocassions
+Space Complexity: O(1) just one list memory used
+
+
+# Question 5
+
+Time complexity: O(n)
+Space complexity: O(1) i.e. no extra space required
+
+If the third node from the last is required, the first loop shifts the pointer three nodes from the start. Then the second loop 
+shifts both the pointers till the first pointer reaches end(None). When this happens, the second pointer points to the third element
+from the last. 
